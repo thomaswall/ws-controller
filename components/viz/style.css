@@ -1,0 +1,28 @@
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-family: Helvetica;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.button {
+  border-radius: 100px;
+  border: 1px solid lightblue;
+  cursor: pointer;
+  background: white;
+  padding: 5px 10px;
+  width: 150px;
+  height: 100px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.button--active {
+  background: lightblue;
+  color: white;
+}
