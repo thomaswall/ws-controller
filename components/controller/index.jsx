@@ -10,13 +10,13 @@ export default class Controller extends Component {
 			// Config from the visualization
 			this.state = {
 				activeScene: 1,
-				title: "Template"
+				title: "Template",
+				scenes: [1,2,3,4,5,6],
+				triggers: ["Bump", "Chirp", "Slice", "Rotate"],
+				visualizations: ["Template", "Cube Boy", "Fishies", "Growman's Center", "The Stranger in the Night"]
 			}
-			this.scenes = [1,2,3,4,5,6];
-			this.triggers = ["Bump", "Chirp", "Slice", "Rotate"];
 
 			// Config from the server
-			this.visualizations = ["Template", "Cube Boy", "Fishies", "Growman's Center", "The Stranger in the Night"]
 	}
 
 	componentWillMount = () => {
@@ -95,15 +95,15 @@ export default class Controller extends Component {
 
 
 	render = () => {
-		const sceneButtons = this.scenes.map((x) => {
+		const sceneButtons = this.state.scenes.map((x) => {
 			return <div onClick={() => this.changeScene(x)} className={this.activeScene(x) + "grid-2 controller-button"} key={x}>{x}</div>
 		});
 
-		const triggers = this.triggers.map((x, index) => {
+		const triggers = this.state.triggers.map((x, index) => {
 			return <div onClick={() => this.trigger(index)} className={this.activeTrigger(index) + "grid-3 controller-button"} key={index}>{x}</div>
 		});
 
-		const visualizations = this.visualizations.map((x) => {
+		const visualizations = this.state.visualizations.map((x) => {
 			return <li onClick={() => this.changeViz(x)} key={x} className={this.activeViz(x)}>{x}</li>
 		})
 
