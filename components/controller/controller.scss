@@ -19,6 +19,23 @@ $off-white: #f7f7f7;
 		color: $fore;
 		margin-bottom: 10px;
 		margin-top: 10px;
+		width: 100%;
+		float: left;
+
+		span {
+			cursor: pointer;
+		}
+
+		.x {
+			margin-right: 15px;
+			cursor: pointer;
+			color: $back;
+			transition: 250ms;
+
+			&:hover {
+				opacity: 0.6;
+			}
+		}
 	}
 
 	.section {
@@ -65,6 +82,46 @@ $off-white: #f7f7f7;
 				border-color: $off-white;
 				letter-spacing: -5px;
 			}
+		}
+	}
+
+	#overlay {
+		background: $off-white;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		transition: 250ms;
+		opacity: 0;
+		pointer-events: none;
+
+		.top-title {
+			display: inline-flex;
+			justify-content: space-between;
+		}
+
+		ul {
+			li {
+				font-family: Helvetica;
+				font-weight: 700;
+				font-size: 40px;
+				cursor: pointer;
+				transition: 200ms;
+				line-height: 1.5;
+
+				&:hover {
+					opacity: 0.5;
+				}
+
+				&.active {
+					color: $fore;
+				}
+			}
+		}
+
+		&.open {
+			opacity: 1;
+			pointer-events: initial;
 		}
 	}
 }

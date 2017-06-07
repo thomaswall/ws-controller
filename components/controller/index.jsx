@@ -6,21 +6,29 @@ export default class Controller extends Component {
 
 	constructor(props) {
 			super(props);
+
+			// Config from the visualization
 			this.state = {
-				activeScene: 1
+				activeScene: 1,
+				title: "Template"
 			}
 			this.scenes = [1,2,3,4,5,6];
 			this.triggers = ["Bump", "Chirp", "Slice", "Rotate"];
-			this.title = "Template";
+
+			// Config from the server
+			this.visualizations = ["Template", "Cube Boy", "Fishies", "Growman's Center", "The Stranger in the Night"]
 	}
 
 	componentWillMount = () => {
 		document.addEventListener("keydown", this.onKeyDown);
 	}
 
+	componentDidMount = () => {
+
+	}
+
 	changeScene = (sceneNumber) => {
 		this.setState({activeScene: sceneNumber})
-		console.log("Going to scene number " + sceneNumber);
 	}
 
 	activeScene = (sceneNumber) => {
@@ -48,9 +56,7 @@ export default class Controller extends Component {
 			this.changeScene(key-48);
 		}
 		else if (key == 32) {
-			this.setState({
-				showMenu: true
-			})
+			this.toggleOverlay();
 		}
 		else {
 			switch (key) {
@@ -68,8 +74,25 @@ export default class Controller extends Component {
 					break;
 			}
 		}
-
 	}
+
+	toggleOverlay = () => {
+		this.setState({
+			showMenu: !this.state.showMenu
+		});
+	}
+
+	changeViz = (name) => {
+		this.setState({
+			title: name,
+			showMenu: false
+		});
+	}
+
+	activeViz = (name) => {
+		return this.state.title == name ? 'active ' : '';
+	}
+
 
 	render = () => {
 		const sceneButtons = this.scenes.map((x) => {
@@ -80,9 +103,13 @@ export default class Controller extends Component {
 			return <div onClick={() => this.trigger(index)} className={this.activeTrigger(index) + "grid-3 controller-button"} key={index}>{x}</div>
 		});
 
+		const visualizations = this.visualizations.map((x) => {
+			return <li onClick={() => this.changeViz(x)} key={x} className={this.activeViz(x)}>{x}</li>
+		})
+
     return (
       <div id="controller">
-				<h1 className="top-title">{this.title} Controller</h1>
+				<h1 className="top-title" onClick={this.toggleOverlay}>{this.state.title} Controller</h1>
 
 				<div className="section">
 					<h2 className="title">Scenes</h2>
@@ -92,6 +119,19 @@ export default class Controller extends Component {
 				<div className="section">
 					<h2 className="title">Triggers</h2>
 					{triggers}
+				</div>
+
+				<div id="overlay" className={this.state.showMenu ? "open" : null}>
+					<h1 className="top-title">Select Visualization <span onClick={this.toggleOverlay} className="x">&times;</span></h1>
+
+						<div className="section">
+							<h2 className="title">Available Visualizations</h2>
+							<div className="grid-12">
+								<ul>
+									{visualizations}
+								</ul>
+							</div>
+						</div>
 				</div>
 
       </div>
