@@ -1,0 +1,70 @@
+$back: #1b1d1c;
+$fore: #ea1821;
+$off-white: #f7f7f7;
+
+#controller {
+
+	background-color: $back;
+	height: 100%;
+	width: 100%;
+	float: left;
+	overflow: hidden;
+
+	.top-title {
+		font-family: Helvetica;
+		font-size: 80px;
+		letter-spacing: -3px;
+		padding-bottom: 10px;
+		border-bottom: 8px solid $fore;
+		color: $fore;
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
+
+	.section {
+		width: 100%;
+		margin-bottom: 20px;
+		float: left;
+
+
+		.title {
+			font-family: Helvetica;
+			font-size: 40px;
+			letter-spacing: -1px;
+			padding-bottom: 10px;
+			border-bottom: 1px solid $fore;
+			color: $fore;
+			margin-bottom: 0;
+		}
+
+		.controller-button {
+			font-family: Helvetica;
+			font-weight: 700;
+			font-size: 70px;
+			letter-spacing: -3px;
+
+			color: $fore;
+			background: $back;
+			min-height: 160px;
+			cursor: pointer;
+			transition: 250ms;
+			border-left: 1px solid $fore;
+
+			&:nth-of-type(6n-5) {
+				border: none;
+			}
+
+			&.active {
+				color: $off-white;
+				border-color: $off-white;
+			}
+
+			&:hover, &.fake-hover {
+				color: $back;
+				background: $off-white;
+				border-color: $off-white;
+				letter-spacing: -5px;
+			}
+		}
+	}
+}
