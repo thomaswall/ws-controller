@@ -1,2 +1,1 @@
-# WS-Controller
-## An enterprise visualization solution
+# WS-Controller - An enterprise visualization solution
