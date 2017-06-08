@@ -38,6 +38,10 @@ module.exports = {
 				loaders: ['style', 'css', 'postcss']
 			},
 			{
+				test: /\.scss/,
+				loader: 'style-loader!css-loader!postcss-loader!sass-loader?outputStyle=expanded'
+			},
+			{
 				test: /\.(otf|svg|eot|woff|woff2|ttf|jpg|png|gif)$/,
 				loaders: ['url-loader']
 			},

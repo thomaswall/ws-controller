@@ -1,0 +1,15 @@
+$gutter: 15px;
+$class-slug: grid;
+
+@for $i from 1 through 12 {
+    $width: percentage($i / 12);
+
+    .grid-#{$i} {
+				float: left;
+				box-sizing: border-box;
+
+        width: $width;
+				padding-left: $gutter;
+				padding-right: $gutter;
+    }
+}
