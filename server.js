@@ -6,7 +6,7 @@ var webpackHotMiddleware = require('webpack-hot-middleware')
 var config = require('./webpack.debug.config.js')
 
 const host = '0.0.0.0'
-const port = 9090
+const port = 80
 
 const app = express()
 

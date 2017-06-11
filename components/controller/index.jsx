@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './controller.scss';
 import './grid.scss';
 
@@ -10,13 +11,13 @@ export default class Controller extends Component {
 			// Config from the visualization
 			this.state = {
 				activeScene: 1,
-				title: "Template",
+				title: "Visualization",
 				scenes: [1,2,3,4,5,6],
 				triggers: ["Bump", "Chirp", "Slice", "Rotate"],
-				visualizations: ["Template", "Cube Boy", "Fishies", "Growman's Center", "The Stranger in the Night"]
+				visualizations: ["Visualization", "Cube Boy", "Fishies", "Growman's Center", "The Stranger in the Night"]
 			}
 
-			// Config from the server
+			this.socket = new WebSocket("ws://localhost:1337");
 	}
 
 	componentWillMount = () => {
@@ -28,7 +29,8 @@ export default class Controller extends Component {
 	}
 
 	changeScene = (sceneNumber) => {
-		this.setState({activeScene: sceneNumber})
+		this.socket.send(sceneNumber);
+		this.setState({activeScene: sceneNumber});
 	}
 
 	activeScene = (sceneNumber) => {
@@ -36,6 +38,7 @@ export default class Controller extends Component {
 	}
 
 	trigger = (index) => {
+		this.socket.send(this.state.triggers[index]);
 		this.setState({
 			activeTrigger: index
 		})
@@ -83,6 +86,7 @@ export default class Controller extends Component {
 	}
 
 	changeViz = (name) => {
+		this.socket.send(name);
 		this.setState({
 			title: name,
 			showMenu: false
