@@ -13,7 +13,7 @@ export default class Controller extends Component {
 				activeScene: 1,
 				title: "Visualization",
 				scenes: [1,2,3,4,5,6],
-				triggers: ["Boom", "Wave", "Cube", "Cone", "Cylinder", "Left", "Right", "Up", "Down", "Slower", "Faster"],
+				triggers: ["Boom", "Wave", "Cube", "Cone", "Cylinder", "Fishboy"],
 				visualizations: ["Visualization", "Cube Boy", "Fishies", "Growman's Center", "The Stranger in the Night"]
 			}
 
@@ -51,6 +51,27 @@ export default class Controller extends Component {
 
 	activeTrigger = (index) => {
 		return this.state.activeTrigger == index ? 'fake-hover ' : '';
+	}
+
+	sendRange = (event) => {
+		this.socket.send("Range-" + event.target.value);
+	  this.setState({value: event.target.value});
+	}
+
+	sendScale = (value) => {
+		this.socket.send("Range-" + event.target.value);
+		this.setState({
+			activeScale: value
+		})
+		window.setTimeout(function() {
+			this.setState({
+				activeScale: null
+			})
+		}.bind(this), 200);
+	}
+
+	activeScale = (value) => {
+		return this.state.activeScale == value ? 'fake-hover ' : '';
 	}
 
 	onKeyDown = (event) => {
@@ -123,6 +144,24 @@ export default class Controller extends Component {
 				<div className="section">
 					<h2 className="title">Triggers</h2>
 					{triggers}
+				</div>
+
+				<div className="section">
+					<h2 className="title">Scalable</h2>
+
+					<div className="flex-container">
+						<div className="grid-4 range-container">
+							<input onChange={this.sendRange} type="range" min="0" max="100" value={this.state.range} />
+						</div>
+						<div onClick={() => this.sendScale("-")} className={this.activeScale("-") + "grid-4 controller-button"}>
+							-
+						</div>
+						<div onClick={() => this.sendScale("+")} className={this.activeScale("+") + "grid-4 controller-button"}>
+							+
+						</div>
+					</div>
+
+
 				</div>
 
 				<div id="overlay" className={this.state.showMenu ? "open" : null}>

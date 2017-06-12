@@ -56,6 +56,19 @@ body {
 			margin-bottom: 0px;
 		}
 
+		.flex-container {
+			width: 100%;
+			display: flex;
+		}
+
+		.range-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		input[type="range"] {
+			width: 100%;
+		}
 
 		.title {
 			font-family: Helvetica;
@@ -82,7 +95,7 @@ body {
 			min-height: 160px;
 			cursor: pointer;
 			transition: 250ms;
-			border: 1px solid $fore;
+			border-left: 1px solid $fore;
 			border-bottom: none;
 			/*border-top: 1px solid $fore;*/
 
@@ -91,7 +104,11 @@ body {
 				font-size: 30px;
 			}
 
-			&:nth-of-type(6n-5) {
+			&.grid-2:nth-of-type(6n-5) {
+				border: none;
+			}
+
+			&.grid-3:nth-of-type(4n-3) {
 				border: none;
 			}
 
@@ -110,6 +127,7 @@ body {
 					letter-spacing: -2px;
 				}
 			}
+
 		}
 	}
 
