@@ -2,6 +2,9 @@ $back: #1b1d1c;
 $fore: #ea1821;
 $off-white: #f7f7f7;
 
+body {
+	user-select: none;
+}
 #controller {
 
 	background-color: $back;

@@ -13,7 +13,7 @@ export default class Controller extends Component {
 				activeScene: 1,
 				title: "Visualization",
 				scenes: [1,2,3,4,5,6],
-				triggers: ["Boom", "Wave", "Cube", "Cone", "Cylinder"],
+				triggers: ["Boom", "Wave", "Cube", "Cone", "Cylinder", "Left", "Right", "Up", "Down", "Slower", "Faster"],
 				visualizations: ["Visualization", "Cube Boy", "Fishies", "Growman's Center", "The Stranger in the Night"]
 			}
 
