@@ -154,17 +154,17 @@ export default class Controller extends Component {
 							<input onChange={this.sendRange} type="range" min="0" max="100" value={this.state.range} />
 						</div>
 
-						<div onClick={() => this.sendScale("-")} className={this.activeScale("x-") + "grid-2 controller-button"}>
+						<div onClick={() => this.sendScale("x-")} className={this.activeScale("x-") + "grid-2 controller-button"}>
 							x-
 						</div>
-						<div onClick={() => this.sendScale("+")} className={this.activeScale("x+") + "grid-2 controller-button"}>
+						<div onClick={() => this.sendScale("y+")} className={this.activeScale("x+") + "grid-2 controller-button"}>
 							x+
 						</div>
 
-						<div onClick={() => this.sendScale("-")} className={this.activeScale("y-") + "grid-2 controller-button"}>
+						<div onClick={() => this.sendScale("y-")} className={this.activeScale("y-") + "grid-2 controller-button"}>
 							y-
 						</div>
-						<div onClick={() => this.sendScale("+")} className={this.activeScale("y+") + "grid-2 controller-button"}>
+						<div onClick={() => this.sendScale("y+")} className={this.activeScale("y+") + "grid-2 controller-button"}>
 							y+
 						</div>
 					</div>
