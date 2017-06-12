@@ -59,7 +59,7 @@ export default class Controller extends Component {
 	}
 
 	sendScale = (value) => {
-		this.socket.send("Range-" + event.target.value);
+		this.socket.send(value);
 		this.setState({
 			activeScale: value
 		})
