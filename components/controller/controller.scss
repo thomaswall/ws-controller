@@ -79,7 +79,9 @@ $off-white: #f7f7f7;
 			min-height: 160px;
 			cursor: pointer;
 			transition: 250ms;
-			border-left: 1px solid $fore;
+			border: 1px solid $fore;
+			border-bottom: none;
+			/*border-top: 1px solid $fore;*/
 
 			@media (max-width: 767px) {
 				min-height: 80px;

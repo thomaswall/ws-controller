@@ -13,11 +13,11 @@ export default class Controller extends Component {
 				activeScene: 1,
 				title: "Visualization",
 				scenes: [1,2,3,4,5,6],
-				triggers: ["Bump", "Chirp", "Slice", "Rotate"],
+				triggers: ["Boom", "Wave", "Cube", "Cone", "Cylinder"],
 				visualizations: ["Visualization", "Cube Boy", "Fishies", "Growman's Center", "The Stranger in the Night"]
 			}
 
-			this.socket = new WebSocket("ws://localhost:1337");
+			this.socket = new WebSocket("ws://192.168.1.106:1337");
 	}
 
 	componentWillMount = () => {
