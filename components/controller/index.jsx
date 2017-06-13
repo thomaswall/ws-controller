@@ -110,8 +110,8 @@ export default class Controller extends Component {
 
 	changeViz = (name) => {
 		this.socket.send(name);
-		for(let viz of config) {
-			if(viz.title == name) {
+		for (let viz of config) {
+			if (viz.title == name) {
 				this.setState({
 					title: viz.title,
 					scenes: viz.scenes,
@@ -155,7 +155,7 @@ export default class Controller extends Component {
 					  </div>
 				  </div>
 		  </div>
-		  
+
 				<h1 className="top-title" onClick={this.toggleOverlay}>{this.state.title} Controller</h1>
 
 				<div className="section">

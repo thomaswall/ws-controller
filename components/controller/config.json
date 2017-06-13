@@ -8,5 +8,10 @@
 		"title": "Lawn",
 		"scenes": [1,2,3,4],
 		"triggers": ["Boom", "Scatter"]
+	},
+	{
+		"title": "TV",
+		"scenes": [1,2,3,4],
+		"triggers": ["Particles", "Bump"]
 	}
 ]
