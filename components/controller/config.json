@@ -1,0 +1,12 @@
+[
+	{
+		"title": "Jachary",
+		"scenes": [1,2,3,4,5,6],
+		"triggers": ["Boom", "Wave", "Cube", "Cone", "Cylinder", "Fishboy"]
+	},
+	{
+		"title": "Lawn",
+		"scenes": [1,2,3,4],
+		"triggers": ["Boom", "Scatter"]
+	}
+]

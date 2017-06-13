@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from './config.json';
 
 import './controller.scss';
 import './grid.scss';
@@ -10,14 +11,15 @@ export default class Controller extends Component {
 
 			// Config from the visualization
 			this.state = {
+				activeViz: 0,
 				activeScene: 1,
-				title: "Visualization",
-				scenes: [1,2,3,4,5,6],
-				triggers: ["Boom", "Wave", "Cube", "Cone", "Cylinder", "Fishboy"],
-				visualizations: ["Visualization", "Cube Boy", "Fishies", "Growman's Center", "The Stranger in the Night"]
+				title: config[0].title,
+				scenes: config[0].scenes,
+				triggers: config[0].triggers,
+				visualizations: config.map(c => c.title)
 			}
 
-			this.socket = new WebSocket("ws://192.168.1.106:1337");
+			this.socket = new WebSocket("ws://localhost:1337");
 	}
 
 	componentWillMount = () => {
@@ -108,10 +110,17 @@ export default class Controller extends Component {
 
 	changeViz = (name) => {
 		this.socket.send(name);
-		this.setState({
-			title: name,
-			showMenu: false
-		});
+		for(let viz of config) {
+			if(viz.title == name) {
+				this.setState({
+					title: viz.title,
+					scenes: viz.scenes,
+					triggers: viz.triggers
+				});
+
+				this.toggleOverlay();
+			}
+		}
 	}
 
 	activeViz = (name) => {
@@ -134,6 +143,19 @@ export default class Controller extends Component {
 
     return (
       <div id="controller">
+		  <div id="overlay" className={this.state.showMenu ? "open" : null}>
+			  <h1 className="top-title">Select Visualization <span onClick={this.toggleOverlay} className="x">&times;</span></h1>
+
+				  <div className="section">
+					  <h2 className="title">Available Visualizations</h2>
+					  <div className="grid-12">
+						  <ul>
+							  {visualizations}
+						  </ul>
+					  </div>
+				  </div>
+		  </div>
+		  
 				<h1 className="top-title" onClick={this.toggleOverlay}>{this.state.title} Controller</h1>
 
 				<div className="section">
@@ -162,19 +184,6 @@ export default class Controller extends Component {
 					</div>
 
 
-				</div>
-
-				<div id="overlay" className={this.state.showMenu ? "open" : null}>
-					<h1 className="top-title">Select Visualization <span onClick={this.toggleOverlay} className="x">&times;</span></h1>
-
-						<div className="section">
-							<h2 className="title">Available Visualizations</h2>
-							<div className="grid-12">
-								<ul>
-									{visualizations}
-								</ul>
-							</div>
-						</div>
 				</div>
 
       </div>
