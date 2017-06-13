@@ -61,7 +61,7 @@ export default class Controller extends Component {
 	}
 
 	sendScale = (value) => {
-		this.socket.send("Range-" + event.target.value);
+		this.socket.send(value);
 		this.setState({
 			activeScale: value
 		})
@@ -169,17 +169,25 @@ export default class Controller extends Component {
 				</div>
 
 				<div className="section">
-					<h2 className="title">Scalable</h2>
+					<h2 className="title">Scalables</h2>
 
 					<div className="flex-container">
 						<div className="grid-4 range-container">
 							<input onChange={this.sendRange} type="range" min="0" max="100" value={this.state.range} />
 						</div>
-						<div onClick={() => this.sendScale("-")} className={this.activeScale("-") + "grid-4 controller-button"}>
-							-
+
+						<div onClick={() => this.sendScale("x-")} className={this.activeScale("x-") + "grid-2 controller-button"}>
+							x-
 						</div>
-						<div onClick={() => this.sendScale("+")} className={this.activeScale("+") + "grid-4 controller-button"}>
-							+
+						<div onClick={() => this.sendScale("y+")} className={this.activeScale("x+") + "grid-2 controller-button"}>
+							x+
+						</div>
+
+						<div onClick={() => this.sendScale("y-")} className={this.activeScale("y-") + "grid-2 controller-button"}>
+							y-
+						</div>
+						<div onClick={() => this.sendScale("y+")} className={this.activeScale("y+") + "grid-2 controller-button"}>
+							y+
 						</div>
 					</div>
 
