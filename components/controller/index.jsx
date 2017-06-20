@@ -19,7 +19,7 @@ export default class Controller extends Component {
 				visualizations: config.map(c => c.title)
 			}
 
-			this.socket = new WebSocket("ws://localhost:1337");
+			this.socket = new WebSocket("ws://192.168.1.9:1337");
 	}
 
 	componentWillMount = () => {
@@ -176,17 +176,17 @@ export default class Controller extends Component {
 							<input onChange={this.sendRange} type="range" min="0" max="100" value={this.state.range} />
 						</div>
 
-						<div onClick={() => this.sendScale("x-")} className={this.activeScale("x-") + "grid-2 controller-button"}>
+						<div onClick={() => this.sendScale("Left")} className={this.activeScale("x-") + "grid-2 controller-button"}>
 							x-
 						</div>
-						<div onClick={() => this.sendScale("y+")} className={this.activeScale("x+") + "grid-2 controller-button"}>
+						<div onClick={() => this.sendScale("Right")} className={this.activeScale("x+") + "grid-2 controller-button"}>
 							x+
 						</div>
 
-						<div onClick={() => this.sendScale("y-")} className={this.activeScale("y-") + "grid-2 controller-button"}>
+						<div onClick={() => this.sendScale("Down")} className={this.activeScale("y-") + "grid-2 controller-button"}>
 							y-
 						</div>
-						<div onClick={() => this.sendScale("y+")} className={this.activeScale("y+") + "grid-2 controller-button"}>
+						<div onClick={() => this.sendScale("Up")} className={this.activeScale("y+") + "grid-2 controller-button"}>
 							y+
 						</div>
 					</div>
