@@ -19,7 +19,7 @@ export default class Controller extends Component {
 				visualizations: config.map(c => c.title)
 			}
 
-			this.socket = new WebSocket("ws://192.168.1.9:1337");
+			this.socket = new WebSocket("ws://192.168.1.13:1337");
 	}
 
 	componentWillMount = () => {
@@ -78,6 +78,20 @@ export default class Controller extends Component {
 
 	onKeyDown = (event) => {
 		let key = event.keyCode;
+		console.log(event.keyCode);
+
+		if(key == 37) { // left
+			this.socket.send("Left");
+		}
+		if(key == 38) { // up
+			this.socket.send("Up");
+		}
+		if(key == 39) { //right
+			this.socket.send("Right");
+		}
+		if(key == 40) { // down
+			this.socket.send("Down");
+		}
 		if (key < 58 && key > 48) {
 			this.changeScene(key-48);
 		}
